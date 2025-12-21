@@ -1,3 +1,21 @@
 # guffy1412.github.io
 
-This is my personal profile! :) I haven't done much relax!
+Personal portfolio website for Frank Sun (software engineer).
+
+To view locally, open `index.html` in your browser or serve the folder using a static server.
+
+Examples:
+
+```bash
+# Python 3: from the repo root
+python -m http.server 8000
+# then open http://localhost:8000
+```
+
+Files added:
+
+- `index.html` — the portfolio page
+- `styles.css` — page styles
+- `script.js` — small interactive helpers
+
+Replace the contact email in `index.html` with your real email before publishing.
