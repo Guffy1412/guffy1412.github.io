@@ -36,3 +36,12 @@ document.addEventListener('DOMContentLoaded',function(){
     })
   });
 });
+
+// Convert vertical scroll to horizontal scroll
+document.addEventListener('wheel', function(e) {
+  e.preventDefault();
+  window.scrollBy({
+    left: e.deltaY,
+    behavior: 'smooth'
+  });
+}, { passive: false });
