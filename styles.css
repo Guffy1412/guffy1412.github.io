@@ -36,6 +36,11 @@ main {
   overflow-x: auto;
   scroll-snap-type: x mandatory;
   height: 100vh;
+  scrollbar-width: none; /* Firefox */
+  -ms-overflow-style: none; /* IE and Edge */
+}
+main::-webkit-scrollbar {
+  display: none; /* Chrome, Safari, Opera */
 }
 main section {
   min-width: 100vw;

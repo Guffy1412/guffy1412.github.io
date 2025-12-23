@@ -43,15 +43,40 @@ document.addEventListener("DOMContentLoaded", function () {
   });
 });
 
-// Convert vertical scroll to horizontal scroll
+// Convert vertical scroll to horizontal scroll (section by section)
+let isScrolling = false;
 document.addEventListener(
   "wheel",
   function (e) {
     e.preventDefault();
-    window.scrollBy({
-      left: e.deltaY,
+    if (isScrolling) return;
+    isScrolling = true;
+
+    const main = document.querySelector("main");
+    if (!main) return;
+
+    const sections = main.querySelectorAll("section");
+    const sectionWidth = window.innerWidth;
+    const currentIndex = Math.round(main.scrollLeft / sectionWidth);
+
+    let targetIndex;
+    if (e.deltaY > 0) {
+      // Scroll down -> next section
+      targetIndex = Math.min(currentIndex + 1, sections.length - 1);
+    } else {
+      // Scroll up -> previous section
+      targetIndex = Math.max(currentIndex - 1, 0);
+    }
+
+    main.scrollTo({
+      left: targetIndex * sectionWidth,
       behavior: "smooth",
     });
+
+    // Reset flag after scroll completes
+    setTimeout(() => {
+      isScrolling = false;
+    }, 600); // Adjust timing based on smooth scroll duration
   },
   { passive: false }
 );
